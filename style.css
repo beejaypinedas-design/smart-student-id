@@ -172,6 +172,10 @@ main {
     min-height: 205px;
     border-radius: 25px;
     padding: 22px;
+    color: white;
+    background:
+        radial-gradient(circle at 90% 10%, rgba(255,255,255,0.20), transparent 25%),
+        linear-gradient(135deg, #2563eb, #1d4ed8 60%, #173ea5);
     box-shadow: 0 15px 35px rgba(37, 99, 235, 0.25);
     position: relative;
     overflow: hidden;
@@ -632,7 +636,6 @@ main {
 .nfc-section {
     margin-top: 22px;
     padding: 20px;
-    background: linear-gradient(135deg, #eff6ff, #ffffff);
     border: 1px solid #dbeafe;
     border-radius: 22px;
     display: block;
@@ -737,7 +740,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: auto;
+    margin: auto;   
 }
 
 .profile-avatar img {
