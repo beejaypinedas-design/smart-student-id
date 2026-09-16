@@ -15,7 +15,7 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="case.css">
 </head>
 
 <body>
@@ -88,7 +88,7 @@
                 <div class="student-card-middle">
 
                     <div class="student-avatar">
-                        <img src="https://media.themoviedb.org/t/p/w235_and_h235_face/9KUrc1rZR1Xrqg2cqmPsgxCo4Zc.jpg" alt="student-avatar">
+                        <img src=https://media.themoviedb.org/t/p/w235_and_h235_face/9KUrc1rZR1Xrqg2cqmPsgxCo4Zc.jpg" alt="student-avatar">
                     </div>
 
                     <div>
@@ -175,7 +175,7 @@
 
                 <div class="balance-actions">
 
-                    <button onclick="addBalance(100)">
+                    <button onclick="openBalanceModal()">
                         <i class="fa-solid fa-plus"></i>
                         Add Balance
                     </button>
@@ -434,9 +434,9 @@
                     **** **** **** 0123
                 </div>
 
-                <button onclick="addBalance(100)">
+                <button onclick="openBalanceModal()">
                     <i class="fa-solid fa-plus"></i>
-                    Add ₱100
+                    Add Balance
                 </button>
 
             </div>
@@ -638,10 +638,96 @@
         <span id="notificationText">Success</span>
     </div>
 
+
+    <div class="bm-overlay" id="bmOverlay">
+    <div class="bm-sheet">
+
+        <div id="bmStepMethods">
+            <div class="bm-header">
+                <div class="bm-title">Add Balance</div>
+                <button class="bm-close" onclick="closeBalanceModal()">✕</button>
+            </div>
+
+            <div class="bm-method" onclick="bmSelectMethod('GCash')">
+                <div class="bm-method-icon bm-gcash-icon">
+                    <img src="gcash.webp" alt="GCash">
+                </div>
+                <div>
+                    <div class="bm-method-name">GCash</div>
+                    <div class="bm-method-sub">E-wallet</div>
+                </div>
+                <div class="bm-chevron">›</div>
+            </div>
+
+            <div class="bm-method" onclick="bmSelectMethod('Maya')">
+                <div class="bm-method-icon bm-maya-icon">
+                    <img src="maya.webp" alt="Maya">
+                </div>
+                <div>
+                    <div class="bm-method-name">Maya</div>
+                    <div class="bm-method-sub">E-wallet</div>
+                </div>
+                <div class="bm-chevron">›</div>
+            </div>
+
+            <div class="bm-method" onclick="bmSelectMethod('Debit / Credit Card')">
+                <div class="bm-method-icon bm-card-icon">
+                    <img src="card.jpg" alt="Debit or Credit Card">
+                </div>
+                <div>
+                    <div class="bm-method-name">Debit / Credit Card</div>
+                    <div class="bm-method-sub">Visa, Mastercard</div>
+                </div>
+                <div class="bm-chevron">›</div>
+            </div>
+        </div>
+
+        <div id="bmStepAmount" class="bm-hidden">
+            <button class="bm-back-link" onclick="bmShowStep('methods')">‹ Back</button>
+            <div class="bm-header">
+                <div class="bm-title" id="bmAmountTitle">Add via GCash</div>
+                <button class="bm-close" onclick="closeBalanceModal()">✕</button>
+            </div>
+
+            <div class="bm-field-label">Enter amount</div>
+            <input type="number" class="bm-amount-input" id="bmAmountInput" placeholder="0.00" oninput="bmValidateAmount()">
+
+            <div class="bm-quick-amounts">
+                <button onclick="bmSetAmount(100)">₱100</button>
+                <button onclick="bmSetAmount(300)">₱300</button>
+                <button onclick="bmSetAmount(500)">₱500</button>
+                <button onclick="bmSetAmount(1000)">₱1000</button>
+            </div>
+
+            <div class="bm-summary-row">
+                <span>Payment method</span>
+                <span id="bmSummaryMethod">GCash</span>
+            </div>
+            <div class="bm-summary-row">
+                <span>Processing fee</span>
+                <span>₱0.00</span>
+            </div>
+            <div class="bm-summary-row bm-total">
+                <span>Total</span>
+                <span id="bmSummaryTotal">₱0.00</span>
+            </div>
+
+            <button class="bm-primary-btn" id="bmConfirmBtn" disabled onclick="bmConfirmPayment()">Confirm Payment</button>
+        </div>
+
+        <div id="bmStepSuccess" class="bm-hidden">
+            <div class="bm-success-icon"><i class="fa-solid fa-check"></i></div>
+            <div class="bm-success-text">
+                <h3>Payment Successful</h3>
+                <p id="bmSuccessMsg">₱0.00 added</p>
+            </div>
+            <button class="bm-primary-btn" onclick="closeBalanceModal()">Done</button>
+        </div>
+
+    </div>
 </div>
 
-
-<script src="script.js"></script>
+<script src="case.js"></script>
 
 </body>
 </html>
