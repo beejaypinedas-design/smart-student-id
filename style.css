@@ -1067,3 +1067,268 @@ main {
     }
 
 }
+
+
+/* ============================================================
+   ADD BALANCE MODAL  (bagong dagdag para sa GCash/Maya/Card)
+   ============================================================ */
+
+.bm-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(17,24,39,0.5);
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 999;
+}
+
+.bm-overlay.active {
+    display: flex;
+}
+
+.bm-sheet {
+    width: 100%;
+    max-width: 420px;
+    background: var(--white);
+    border-radius: 20px 20px 0 0;
+    padding: 20px 20px 28px;
+    animation: bmSlideUp .25s ease-out;
+}
+
+@keyframes bmSlideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+.bm-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.bm-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.bm-close {
+    background: var(--background);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--muted);
+}
+
+.bm-method {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: border-color .15s;
+}
+
+.bm-method:hover {
+    border-color: var(--primary);
+}
+
+.bm-method-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.bm-method-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.bm-method-sub {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.bm-chevron {
+    margin-left: auto;
+    color: var(--muted);
+}
+
+.bm-method-icon {
+    overflow: hidden;
+    padding: 0;
+}
+
+.bm-gcash-icon {
+    background: #ffffff;
+}
+
+.bm-gcash-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.bm-maya-icon {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bm-maya-icon img {
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+}
+
+.bm-card-icon {
+    background: #ffffff;
+}
+
+.bm-card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+.bm-field-label {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 16px 0 6px;
+}
+
+.bm-amount-input {
+    width: 100%;
+    font-size: 26px;
+    font-weight: 700;
+    border: none;
+    border-bottom: 2px solid var(--border);
+    padding: 8px 0;
+    outline: none;
+    font-family: inherit;
+    color: var(--text);
+    background: transparent;
+}
+
+.bm-amount-input:focus {
+    border-color: var(--primary);
+}
+
+.bm-quick-amounts {
+    display: flex;
+    gap: 8px;
+    margin: 14px 0;
+}
+
+.bm-quick-amounts button {
+    flex: 1;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: white;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+}
+
+.bm-quick-amounts button:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.bm-summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin: 6px 0;
+    color: var(--muted);
+}
+
+.bm-summary-row.bm-total {
+    color: var(--text);
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.bm-primary-btn {
+    width: 100%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 16px;
+    font-family: inherit;
+}
+
+.bm-primary-btn:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+.bm-back-link {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 13px;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 10px;
+    font-family: inherit;
+}
+
+.bm-success-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: 10px auto 16px;
+}
+
+.bm-success-text {
+    text-align: center;
+}
+
+.bm-success-text h3 {
+    margin: 0 0 4px;
+    color: var(--text);
+}
+
+.bm-success-text p {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0 0 20px;
+}
+
+.bm-hidden {
+    display: none;
+}
