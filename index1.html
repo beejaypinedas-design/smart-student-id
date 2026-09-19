@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Student ID</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style1.css">
+
+    
+    <style>
+        .header-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+        .school-logo img { width: 40px; height: 40px; object-fit: contain; flex-shrink: 0; display: block; }
+        .header-text { min-width: 0; }
+        .header-text h2, .header-text .small-text { white-space: nowrap; margin: 0; }
+    </style>
+</head>
+<body>
+
+    <!-- ================= LOGIN ================= -->
+    <input type="checkbox" id="loginToggle" class="login-toggle">
+    <div class="login-page">
+        <div class="login-card">
+            <div class="login-illustration">
+                <div class="illustration-content">
+                    <div class="fox-avatar">🦊</div>
+                </div>
+            </div>
+            <h2 class="welcome-title">Welcome!</h2>
+            <p class="welcome-desc">
+                Sign in to manage your NFC Card, check your available balance, and stay connected.
+            </p>
+            <div class="form-fields">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="enter your username">
+                    <span class="error-msg" id="userError">username is required!</span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="enter your password">
+                    <span class="error-msg" id="passError">password is required!</span>
+                </div>
+            </div>
+            <button type="button" class="signin-btn" id="signInBtn">
+                <span>→</span> SIGN IN
+            </button>
+            <p class="signup-text">
+                Don't have an account? <span class="signup-link">Get Started Here</span>
+            </p>
+        </div>
+    </div>
+
+
+    <!-- ================= APP ================= -->
+    <div class="app">
+
+        <!-- HEADER (inayos) -->
+        <header class="top-header">
+            <div class="header-left">
+                <div class="school-logo">
+                    <!-- TIP: i-download ang logo at gawing src="logo.png" para hindi mawala ang link -->
+                    <img src="https://scontent.fcrk3-2.fna.fbcdn.net/v/t39.99422-6/730437212_1019883457663814_5658409056583467147_n.png?stp=dst-jpg_tt6&cstp=mx2048x2048&ctp=s2048x2048&_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEtgAnpgnh8Dhu86IXsVADCl520B75tKzmXnbQHvm0rOXcZ3wSvmQ6uomEvbm2je5WtMuPgzeenRzjgR_xDcWVA&_nc_ohc=KPmgjYGn77wQ7kNvwF1iomZ&_nc_oc=Adpfxrdhi_JcyFd14dayYw9TJLCULYBL7p7KAmaKkQXyll2gv0QXR5EZsOMlpVqsxGs&_nc_zt=14&_nc_ht=scontent.fcrk3-2.fna&_nc_gid=oyw7aSMaDdcBMUKXjA0owg&_nc_ss=7b2a8&oh=00_AQJ2Oh5oLwNtnAIPQ3c5Er7PHiAectIAgPGbZWSjyd-3ZQ&oe=6AAB0ABE" alt="School Logo">
+                </div>
+                <div class="header-text">
+                    <p class="small-text">Student Portal</p>
+                    <h2>Smart Student ID</h2>
+                </div>
+            </div>
+            <button class="notification-btn" onclick="showNotification('No new notifications')">
+                <i class="fa-regular fa-bell"></i>
+                <span class="notification-dot"></span>
+            </button>
+        </header>
+
+
+        <main>
+
+            <!-- ============ HOME ============ -->
+            <section id="home" class="page active">
+                <div class="welcome-section">
+                    <div>
+                        <h1>Benedicto</h1>
+                        <p class="student-section">BSIT Web and Mobile Application</p>
+                    </div>
+                    <div class="profile-mini">BP</div>
+                </div>
+
+                <div class="student-card">
+                    <div class="card-top">
+                        <div>
+                            <p class="card-label">SMART STUDENT ID</p>
+                            <h3>STUDENT CARD</h3>
+                        </div>
+                        <div class="nfc-symbol"><i class="fa-solid fa-wifi"></i></div>
+                    </div>
+                    <div class="student-card-middle">
+                        <div class="student-avatar">
+                            <img src="https://media.themoviedb.org/t/p/w235_and_h235_face/9KUrc1rZR1Xrqg2cqmPsgxCo4Zc.jpg" alt="student-avatar">
+                        </div>
+                        <div>
+                            <p class="card-name">Benedicto Pineda</p>
+                            <p class="card-id">WMA 2026-2027</p>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div><span>PROGRAM</span><strong>WMA</strong></div>
+                        <div><span>SECTION</span><strong>3-B</strong></div>
+                        <!-- inayos: walang fa-contactless sa Font Awesome free -->
+                        <div class="card-nfc"><i class="fa-solid fa-wifi"></i> NFC</div>
+                    </div>
+                </div>
+
+                <div class="section-heading"><h3>Quick Access</h3></div>
+                <div class="quick-actions">
+                    <button class="quick-item" onclick="openPage('profile')">
+                        <div class="quick-icon blue"><i class="fa-regular fa-user"></i></div>
+                        <span>Profile</span>
+                    </button>
+                    <button class="quick-item" onclick="openPage('wallet')">
+                        <div class="quick-icon green"><i class="fa-solid fa-wallet"></i></div>
+                        <span>Wallet</span>
+                    </button>
+                    <button class="quick-item" onclick="openPage('attendance')">
+                        <div class="quick-icon purple"><i class="fa-regular fa-calendar-check"></i></div>
+                        <span>Attendance</span>
+                    </button>
+                    <button class="quick-item" onclick="openPage('discounts')">
+                        <div class="quick-icon orange"><i class="fa-solid fa-tag"></i></div>
+                        <span>Discounts</span>
+                    </button>
+                </div>
+
+                <div class="balance-card">
+                    <div class="balance-header">
+                        <div>
+                            <p>Available Balance</p>
+                            <h2 id="balance">₱0.00</h2>
+                        </div>
+                        <div class="wallet-icon"><i class="fa-solid fa-wallet"></i></div>
+                    </div>
+                    <div class="balance-actions">
+                        <button onclick="openBalanceModal()">
+                            <i class="fa-solid fa-plus"></i> Add Balance
+                        </button>
+                        <button onclick="showNotification('Transaction history opened')">
+                            <i class="fa-solid fa-clock-rotate-left"></i> History
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section-heading">
+                    <h3>Attendance</h3>
+                    <button onclick="openPage('attendance')">View details</button>
+                </div>
+                <div class="attendance-card">
+                    <div class="attendance-progress">
+                        <div class="progress-circle">
+                            <div><strong>92%</strong><span>Present</span></div>
+                        </div>
+                    </div>
+                    <div class="attendance-info">
+                        <div><span>Total Classes</span><strong>50</strong></div>
+                        <div><span>Present</span><strong class="green-text">46</strong></div>
+                        <div><span>Absent</span><strong class="red-text">4</strong></div>
+                    </div>
+                </div>
+
+                <div class="section-heading">
+                    <h3>Student Discounts</h3>
+                    <button onclick="openPage('discounts')">See all</button>
+                </div>
+                <div class="discount-list">
+                    <div class="discount-card">
+                        <div class="discount-icon"><i class="fa-solid fa-utensils"></i></div>
+                        <div class="discount-details">
+                            <h4>Campus Cafeteria</h4>
+                            <p>10% Student Discount</p>
+                        </div>
+                        <span class="discount-badge">10%</span>
+                    </div>
+                    <div class="discount-card">
+                        <div class="discount-icon"><i class="fa-solid fa-book"></i></div>
+                        <div class="discount-details">
+                            <h4>School Bookstore</h4>
+                            <p>5% Student Discount</p>
+                        </div>
+                        <span class="discount-badge">5%</span>
+                    </div>
+                </div>
+
+                <div class="section-heading">
+                    <h3>Recent Transactions</h3>
+                    <button onclick="openPage('wallet')">View all</button>
+                </div>
+                <div class="transactions">
+                    <div class="transaction">
+                        <div class="transaction-icon red"><i class="fa-solid fa-utensils"></i></div>
+                        <div class="transaction-info">
+                            <h4>Campus Cafeteria</h4>
+                            <p>Today • 12:30 PM</p>
+                        </div>
+                        <strong class="expense">-₱50.00</strong>
+                    </div>
+                    <div class="transaction">
+                        <div class="transaction-icon green"><i class="fa-solid fa-tag"></i></div>
+                        <div class="transaction-info">
+                            <h4>Student Discount</h4>
+                            <p>Today • 12:30 PM</p>
+                        </div>
+                        <strong class="income">+₱20.00</strong>
+                    </div>
+                    <div class="transaction">
+                        <div class="transaction-icon blue"><i class="fa-solid fa-wallet"></i></div>
+                        <div class="transaction-info">
+                            <h4>Balance Added</h4>
+                            <p>Yesterday • 9:15 AM</p>
+                        </div>
+                        <strong class="income">+₱100.00</strong>
+                    </div>
+                </div>
+
+                <div class="nfc-section">
+                    <div class="nfc-animation">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNuG6yCmvQzvFhrEqcU6nESGe8UaC6DEvUo7Odp3m0Ug&s=10" alt="nfc-Animation">
+                    </div>
+                    <div class="nfc-content">
+                        <span class="nfc-status">
+                            <i class="fa-solid fa-circle"></i> NFC READY
+                        </span>
+                        <h3>Tap your Student ID</h3>
+                        <p>Tap your NFC-enabled student ID on your phone to quickly access your student portal.</p>
+                        <button onclick="simulateNFC()">
+                            <i class="fa-solid fa-wifi"></i> Simulate NFC Tap
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ============ PROFILE ============ -->
+            <section id="profile" class="page">
+                <div class="page-title">
+                    <h1>My Profile</h1>
+                    <p>Student information</p>
+                </div>
+                <div class="profile-card">
+                    <div class="large-profile">
+                        <div class="profile-avatar">
+                            <img src="https://media.themoviedb.org/t/p/w235_and_h235_face/9KUrc1rZR1Xrqg2cqmPsgxCo4Zc.jpg" alt="profile-avatar">
+                        </div>
+                        <h2>Benedicto Pineda</h2>
+                        <p>WMA 2026-2027</p>
+                    </div>
+                    <div class="profile-info">
+                        <div><span>Full Name</span><strong>Benedicto Pineda</strong></div>
+                        <div><span>Student ID</span><strong>WMA-2026-00123</strong></div>
+                        <div><span>Program</span><strong>Web and Mobile Application</strong></div>
+                        <div><span>Section</span><strong>WMA 3-B</strong></div>
+                        <div><span>Status</span><strong class="active-status">Active Student</strong></div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ============ WALLET ============ -->
+            <section id="wallet" class="page">
+                <div class="page-title">
+                    <h1>My Wallet</h1>
+                    <p>Manage your student balance</p>
+                </div>
+                <div class="wallet-large">
+                    <p>Available Balance</p>
+                    <!-- inayos: ₱0.00 na rin ang simula para pareho sa Home -->
+                    <h1 id="walletBalance">₱0.00</h1>
+                    <div class="wallet-card-number">**** **** **** 0123</div>
+                    <button onclick="openBalanceModal()">
+                        <i class="fa-solid fa-plus"></i> Add Balance
+                    </button>
+                </div>
+                <div class="section-heading"><h3>Transaction History</h3></div>
+                <div class="transactions">
+                    <div class="transaction">
+                        <div class="transaction-icon red"><i class="fa-solid fa-utensils"></i></div>
+                        <div class="transaction-info">
+                            <h4>Campus Cafeteria</h4>
+                            <p>Today • 12:30 PM</p>
+                        </div>
+                        <strong class="expense">-₱50.00</strong>
+                    </div>
+                    <div class="transaction">
+                        <div class="transaction-icon green"><i class="fa-solid fa-tag"></i></div>
+                        <div class="transaction-info">
+                            <h4>Student Discount</h4>
+                            <p>Today • 12:30 PM</p>
+                        </div>
+                        <strong class="income">+₱20.00</strong>
+                    </div>
+                    <div class="transaction">
+                        <div class="transaction-icon blue"><i class="fa-solid fa-wallet"></i></div>
+                        <div class="transaction-info">
+                            <h4>Balance Added</h4>
+                            <p>Yesterday</p>
+                        </div>
+                        <strong class="income">+₱100.00</strong>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ============ ATTENDANCE ============ -->
+            <section id="attendance" class="page">
+                <div class="page-title">
+                    <h1>Attendance</h1>
+                    <p>Your attendance record</p>
+                </div>
+                <div class="attendance-large">
+                    <div class="progress-circle large">
+                        <div><strong>92%</strong><span>Present</span></div>
+                    </div>
+                    <h2>Good Attendance!</h2>
+                    <p>Keep maintaining your attendance.</p>
+                </div>
+                <div class="attendance-stats">
+                    <div><i class="fa-regular fa-calendar"></i><strong>50</strong><span>Total Classes</span></div>
+                    <div><i class="fa-solid fa-check"></i><strong>46</strong><span>Present</span></div>
+                    <div><i class="fa-solid fa-xmark"></i><strong>4</strong><span>Absent</span></div>
+                </div>
+            </section>
+
+
+            <!-- ============ DISCOUNTS ============ -->
+            <section id="discounts" class="page">
+                <div class="page-title">
+                    <h1>Student Discounts</h1>
+                    <p>Available student benefits</p>
+                </div>
+                <div class="discount-page-card">
+                    <div class="big-discount-icon"><i class="fa-solid fa-utensils"></i></div>
+                    <div>
+                        <span class="discount-badge">10% OFF</span>
+                        <h2>Campus Cafeteria</h2>
+                        <p>Show your Smart Student ID when paying.</p>
+                    </div>
+                </div>
+                <div class="discount-page-card">
+                    <div class="big-discount-icon purple-bg"><i class="fa-solid fa-book"></i></div>
+                    <div>
+                        <span class="discount-badge">5% OFF</span>
+                        <h2>School Bookstore</h2>
+                        <p>Available for all active students.</p>
+                    </div>
+                </div>
+                <div class="discount-page-card">
+                    <div class="big-discount-icon orange-bg"><i class="fa-solid fa-mug-hot"></i></div>
+                    <div>
+                        <span class="discount-badge">10% OFF</span>
+                        <h2>Campus Coffee Shop</h2>
+                        <p>Use your student ID to receive the discount.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+
+        <!-- ============ BOTTOM NAVIGATION ============ -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" onclick="openPage('home')">
+                <i class="fa-solid fa-house"></i><span>Home</span>
+            </button>
+            <button class="nav-item" onclick="openPage('wallet')">
+                <i class="fa-solid fa-wallet"></i><span>Wallet</span>
+            </button>
+            <button class="nav-item nfc-nav" onclick="simulateNFC()">
+                <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNuG6yCmvQzvFhrEqcU6nESGe8UaC6DEvUo7Odp3m0Ug&s=10" alt="nfc-nav"></div>
+                <span>NFC</span>
+            </button>
+            <button class="nav-item" onclick="openPage('attendance')">
+                <i class="fa-regular fa-calendar-check"></i><span>Attendance</span>
+            </button>
+            <button class="nav-item" onclick="openPage('profile')">
+                <i class="fa-regular fa-user"></i><span>Profile</span>
+            </button>
+        </nav>
+
+
+        <!-- ============ NOTIFICATION ============ -->
+        <div id="notification" class="notification">
+            <i class="fa-solid fa-circle-check"></i>
+            <span id="notificationText">Success</span>
+        </div>
+
+
+        <!-- ============ ADD BALANCE MODAL ============ -->
+        <div class="bm-overlay" id="bmOverlay">
+            <div class="bm-sheet">
+
+                <!-- Step 1: Payment method -->
+                <div id="bmStepMethods">
+                    <div class="bm-header">
+                        <div class="bm-title">Add Balance</div>
+                        <button class="bm-close" onclick="closeBalanceModal()">✕</button>
+                    </div>
+                    <div class="bm-method" onclick="bmSelectMethod('GCash')">
+                        <div class="bm-method-icon bm-gcash-icon"><img src="gcash.webp" alt="GCash"></div>
+                        <div><div class="bm-method-name">GCash</div><div class="bm-method-sub">E-wallet</div></div>
+                        <div class="bm-chevron">›</div>
+                    </div>
+                    <div class="bm-method" onclick="bmSelectMethod('Maya')">
+                        <div class="bm-method-icon bm-maya-icon"><img src="maya.webp" alt="Maya"></div>
+                        <div><div class="bm-method-name">Maya</div><div class="bm-method-sub">E-wallet</div></div>
+                        <div class="bm-chevron">›</div>
+                    </div>
+                    <div class="bm-method" onclick="bmSelectMethod('Debit / Credit Card')">
+                        <div class="bm-method-icon bm-card-icon"><img src="card.jpg" alt="Card"></div>
+                        <div><div class="bm-method-name">Debit / Credit Card</div><div class="bm-method-sub">Visa, Mastercard</div></div>
+                        <div class="bm-chevron">›</div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Amount -->
+                <div id="bmStepAmount" class="bm-hidden">
+                    <button class="bm-back-link" onclick="bmShowStep('methods')">‹ Back</button>
+                    <div class="bm-header">
+                        <div class="bm-title" id="bmAmountTitle">Add via GCash</div>
+                        <button class="bm-close" onclick="closeBalanceModal()">✕</button>
+                    </div>
+                    <div class="bm-field-label">Enter amount</div>
+                    <input type="number" class="bm-amount-input" id="bmAmountInput" placeholder="0.00" oninput="bmValidateAmount()">
+                    <div class="bm-quick-amounts">
+                        <button onclick="bmSetAmount(100)">₱100</button>
+                        <button onclick="bmSetAmount(300)">₱300</button>
+                        <button onclick="bmSetAmount(500)">₱500</button>
+                        <button onclick="bmSetAmount(1000)">₱1000</button>
+                    </div>
+                    <div class="bm-summary-row"><span>Payment method</span><span id="bmSummaryMethod">GCash</span></div>
+                    <div class="bm-summary-row"><span>Processing fee</span><span>₱0.00</span></div>
+                    <div class="bm-summary-row bm-total"><span>Total</span><span id="bmSummaryTotal">₱0.00</span></div>
+                    <button class="bm-primary-btn" id="bmConfirmBtn" disabled onclick="bmConfirmPayment()">Confirm Payment</button>
+                </div>
+
+                <!-- Step 3: Success -->
+                <div id="bmStepSuccess" class="bm-hidden">
+                    <div class="bm-success-icon"><i class="fa-solid fa-check"></i></div>
+                    <div class="bm-success-text">
+                        <h3>Payment Successful</h3>
+                        <p id="bmSuccessMsg">₱0.00 added</p>
+                    </div>
+                    <button class="bm-primary-btn" onclick="closeBalanceModal()">Done</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script1.js"></script>
+</body>
+</html>
